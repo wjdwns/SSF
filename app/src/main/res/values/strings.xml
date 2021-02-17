@@ -4,4 +4,5 @@
     <string name="main2">최근에 본 지원금</string>
     <string name="main3">찜해둔 지원금</string>
     <string name="main4">조건맞춤 지원금</string>
+    <string name="Login">로그인</string>
 </resources>
