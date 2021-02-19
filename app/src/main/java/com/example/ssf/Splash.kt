@@ -14,7 +14,7 @@ class Splash : AppCompatActivity() {
 
         val handler = Handler(Looper.getMainLooper())
         val runnable = Runnable{
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,loginActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -22,7 +22,7 @@ class Splash : AppCompatActivity() {
 
         splash.setOnClickListener{
             handler.removeCallbacks(runnable)
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,loginActivity::class.java)
             startActivity(intent)
             finish()
         }

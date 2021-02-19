@@ -22,8 +22,8 @@
                 android:src="@drawable/ssf"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:maxWidth="120dp"
-                android:maxHeight="120dp"/>
+                android:maxWidth="140dp"
+                android:maxHeight="140dp"/>
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_1"
                 android:layout_width="300dp"
