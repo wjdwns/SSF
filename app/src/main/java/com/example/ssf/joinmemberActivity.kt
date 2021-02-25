@@ -21,7 +21,8 @@ class joinmemberActivity : AppCompatActivity() {
 
             var date_listener  = object : DatePickerDialog.OnDateSetListener {
                 override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-                    date_picker_actions.setText("$year-$month-$day")
+                    val month_1 = month+1
+                    date_picker_actions.setText("$year-$month_1-$dayOfMonth")
                 }
             }
             var builder = DatePickerDialog(this, date_listener, year, month, day)
