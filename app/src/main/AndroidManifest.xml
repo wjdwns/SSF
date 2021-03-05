@@ -11,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <activity android:name=".CommentMenu"></activity>
         <activity android:name=".Search_SettingActivity"></activity>
         <activity android:name=".Keyword_searchActivity" />
-        <activity android:name=".joinmemberActivity" />
-        <activity android:name=".CommentActivity" />
         <activity android:name=".loginActivity" />
         <activity android:name=".Splash">
             <intent-filter>
