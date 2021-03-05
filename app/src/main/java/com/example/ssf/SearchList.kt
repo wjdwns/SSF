@@ -1,18 +1,15 @@
 package com.example.ssf
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_listbase.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_searchlist.*
 
-class ListBase : AppCompatActivity() {
+class SearchList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_listbase)
+        setContentView(R.layout.activity_searchlist)
 
         tv_pagetitle.text = "검색 결과"
 
@@ -33,7 +30,7 @@ class ListBase : AppCompatActivity() {
         )
 
         rv_itemlist.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_itemlist.adapter = listAdapter(realItems)
+        rv_itemlist.adapter = searchlistAdapter(realItems)
 
         val decoDivider = DividerItemDecoration(rv_itemlist.context, 1)
         rv_itemlist.addItemDecoration(decoDivider)

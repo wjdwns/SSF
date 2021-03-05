@@ -10,7 +10,7 @@ import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_detail_page.*
-import kotlinx.android.synthetic.main.activity_main.*
+
 
 class DetailPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +33,12 @@ class DetailPage : AppCompatActivity() {
         /* 웹뷰에서 새 창이 뜨지 않도록 하는 구문 */
 
         wv_detail.loadUrl("https://www.naver.com")       // 링크 주소를 로드함
+
+
+        btn_comment.setOnClickListener{
+            val intent2 = Intent(this, CommentActivity::class.java)
+            startActivity(intent2)
+        }
 
     }
 }

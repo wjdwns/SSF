@@ -1,16 +1,14 @@
 package com.example.ssf
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
-class listAdapter (val items: Array<itemList>) : RecyclerView.Adapter<listAdapter.viewHolder> () {
+class searchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<searchlistAdapter.viewHolder> () {
 
     class viewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
 
@@ -22,7 +20,7 @@ class listAdapter (val items: Array<itemList>) : RecyclerView.Adapter<listAdapte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_example, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_list_example, parent, false)
         return viewHolder(view).apply {
 
 //            view.setOnClickListener {
