@@ -65,7 +65,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/Login"
         android:textStyle="bold"
-        android:background="@color/our"
+        android:backgroundTint="@color/our"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
