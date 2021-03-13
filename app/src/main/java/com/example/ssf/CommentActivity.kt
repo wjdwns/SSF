@@ -1,17 +1,12 @@
 package com.example.ssf
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_comment.*
-import kotlinx.android.synthetic.main.activity_comment_menu.*
-import kotlinx.android.synthetic.main.comment_list_example.*
+
 
 class CommentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,25 +27,6 @@ class CommentActivity : AppCompatActivity() {
         rv_comment.addItemDecoration(decoDivider)
 
         rv_comment.setHasFixedSize(true)
-
-        btn_commentMenu.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.activity_comment_menu, null)
-
-            val list = arrayOf("삭제하기","신고하기")
-            lv_actions.adapter= ArrayAdapter(this, android.R.layout.simple_list_item_1,list)
-
-
-            builder.setView(dialogView)
-
-            builder.setNegativeButton("취소"){dialogInterface, i->
-                /* 취소일 때 아무 액션이 없으므로 빈칸 */
-            }
-
-            builder.show()
-
-
-        }
 
 
     }
