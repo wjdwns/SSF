@@ -24,25 +24,13 @@
                 android:adjustViewBounds="true"
                 android:maxWidth="140dp"
                 android:maxHeight="140dp"/>
-            <LinearLayout
+            <androidx.appcompat.widget.SearchView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_weight="8"
-                android:hint="키워드로 검색하기"
-                android:background="@drawable/edge"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-
-            </LinearLayout>
+                app:iconifiedByDefault="false"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="50dp"
+                app:queryHint="검색어를 입력하시오"/>
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_1"
                 android:layout_width="300dp"

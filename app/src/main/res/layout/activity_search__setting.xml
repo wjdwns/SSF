@@ -24,7 +24,7 @@
             android:textStyle="normal"
             android:clickable="true"/>
         <View
-            android:layout_width="5dp"
+            android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="@color/black"/>
 
@@ -40,6 +40,10 @@
             android:textStyle="normal"
             android:clickable="true" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"/>
 
     <FrameLayout
         android:id="@+id/fragment"
