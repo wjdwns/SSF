@@ -4,7 +4,7 @@
         android:id="@+id/reserv"
         android:enabled="true"
         android:icon="@drawable/reserv"
-        android:title="찜바구니" />
+        android:title="찜하기" />
     <item
         android:id="@+id/home"
         android:enabled="true"
@@ -14,5 +14,5 @@
         android:id="@+id/share"
         android:enabled="true"
         android:icon="@drawable/iconmonstr_link_2_120"
-        android:title="조건맞춤"/>
+        android:title="공유하기"/>
 </menu>

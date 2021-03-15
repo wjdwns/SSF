@@ -1,12 +1,12 @@
 package com.example.ssf
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_comment.*
-import kotlinx.android.synthetic.main.comment_list_example.*
+
 
 class CommentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +27,6 @@ class CommentActivity : AppCompatActivity() {
         rv_comment.addItemDecoration(decoDivider)
 
         rv_comment.setHasFixedSize(true)
-
-        btn_commentMenu.setOnClickListener {
-            val intent = Intent(this, CommentMenu::class.java)
-
-
-        }
 
 
     }
