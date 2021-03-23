@@ -18,5 +18,9 @@ class loginActivity : AppCompatActivity() {
             val intent = Intent(this,joinmemberActivity::class.java)
             startActivity(intent)
         }
+        nomem.setOnClickListener{
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

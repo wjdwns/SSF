@@ -10,18 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //메인이 깨끗.
 
-
-
-        cardview_1.setOnClickListener {
-            val intent = Intent(this, SearchList::class.java)
-            startActivity(intent)
-        }
-        cardview_4.setOnClickListener {
-            val intent = Intent(this, Search_SettingActivity::class.java)
-            startActivity(intent)
-        }
 
         
     }
