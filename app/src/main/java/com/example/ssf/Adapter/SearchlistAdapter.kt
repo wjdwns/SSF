@@ -1,4 +1,4 @@
-package com.example.ssf
+package com.example.ssf.Adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ssf.DetailPage
+import com.example.ssf.R
+import com.example.ssf.itemList
 
 class searchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<searchlistAdapter.viewHolder> () {
 

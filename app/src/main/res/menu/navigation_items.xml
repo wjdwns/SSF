@@ -6,12 +6,12 @@
         android:icon="@drawable/reserv"
         android:title="찜바구니" />
     <item
-        android:id="@+id/home"
+        android:id="@+id/main_home"
         android:enabled="true"
         android:icon="@drawable/iconmonstr_home_6_120"
         android:title="홈으로"/>
     <item
-        android:id="@+id/share"
+        android:id="@+id/search_button"
         android:enabled="true"
         android:icon="@drawable/iconmonstr_link_2_120"
         android:title="조건맞춤"/>

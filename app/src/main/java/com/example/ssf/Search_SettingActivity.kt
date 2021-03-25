@@ -2,7 +2,8 @@ package com.example.ssf
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import com.example.ssf.fragment.search_setting_fragment1
+import com.example.ssf.fragment.search_setting_fragment2
 import kotlinx.android.synthetic.main.activity_search__setting.*
 
 class Search_SettingActivity : AppCompatActivity() {
@@ -14,12 +15,12 @@ class Search_SettingActivity : AppCompatActivity() {
         select1.setOnClickListener{
             val getTopFragment = supportFragmentManager.findFragmentById(R.id.fragment)
             val fragmentTransaction = mFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment,search_setting_fragment1()).commit()
+            fragmentTransaction.replace(R.id.fragment, search_setting_fragment1()).commit()
             }
         select2.setOnClickListener {
             val getTopFragment = supportFragmentManager.findFragmentById(R.id.fragment)
             val fragmentTransaction = mFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment,search_setting_fragment2()).commit()
+            fragmentTransaction.replace(R.id.fragment, search_setting_fragment2()).commit()
         }
     }
 }

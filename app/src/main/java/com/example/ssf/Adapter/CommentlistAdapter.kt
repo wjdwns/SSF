@@ -1,17 +1,15 @@
-package com.example.ssf
+package com.example.ssf.Adapter
 
-import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
-import java.lang.reflect.Array.newInstance
+import com.example.ssf.CommentActivity
+import com.example.ssf.CommentMenuDialog
+import com.example.ssf.R
+import com.example.ssf.commentList
 
 class commentlistAdapter(val comments: Array<commentList>) : RecyclerView.Adapter<commentlistAdapter.viewholder> () {
 
@@ -36,7 +34,7 @@ class commentlistAdapter(val comments: Array<commentList>) : RecyclerView.Adapte
         holder.name.text = comments.get(position).name
         holder.comment.text = comments.get(position).comment
         holder.commentMenu.setOnClickListener {
-            CommentMenuDialog().show((it.context as CommentActivity).supportFragmentManager, "By.김한슬")    
+            CommentMenuDialog().show((it.context as CommentActivity).supportFragmentManager, "By.김한슬")
         }
     }
 }
