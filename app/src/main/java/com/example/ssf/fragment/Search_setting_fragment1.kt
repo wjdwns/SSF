@@ -71,9 +71,9 @@ class search_setting_fragment1 :Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
             }
         }
+
     }
     fun dipToPixels(dipValue:Float):Float{
         return TypedValue.applyDimension(

@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ssf.DetailPage
+import com.example.ssf.Activity.DetailPageActivity
 import com.example.ssf.R
-import com.example.ssf.itemList
+import com.example.ssf.List.itemList
 
 class searchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<searchlistAdapter.viewHolder> () {
 
@@ -49,7 +49,7 @@ class searchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<sear
 
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailPage::class.java)
+            val intent = Intent(holder.itemView.context, DetailPageActivity::class.java)
             intent.putExtra("title", items.get(position).title)
             intent.putExtra("dday", items.get(position).dday)
             intent.putExtra("heart", items.get(position).heart)

@@ -1,14 +1,14 @@
-package com.example.ssf
+package com.example.ssf.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.appcompat.app.ActionBar
+import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_splash.*
 
-class Splash : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -16,7 +16,7 @@ class Splash : AppCompatActivity() {
 
         val handler = Handler(Looper.getMainLooper())
         val runnable = Runnable{
-            val intent = Intent(this,loginActivity::class.java)
+            val intent = Intent(this, loginActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -24,7 +24,7 @@ class Splash : AppCompatActivity() {
 
         splash.setOnClickListener{
             handler.removeCallbacks(runnable)
-            val intent = Intent(this,loginActivity::class.java)
+            val intent = Intent(this, loginActivity::class.java)
             startActivity(intent)
             finish()
         }

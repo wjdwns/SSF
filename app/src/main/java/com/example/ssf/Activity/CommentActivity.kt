@@ -1,4 +1,4 @@
-package com.example.ssf
+package com.example.ssf.Activity
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ssf.Adapter.commentlistAdapter
+import com.example.ssf.List.commentList
+import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_comment.*
 
 

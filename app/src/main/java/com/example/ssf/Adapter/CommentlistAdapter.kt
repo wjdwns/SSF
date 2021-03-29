@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ssf.CommentActivity
-import com.example.ssf.CommentMenuDialog
+import com.example.ssf.Activity.CommentActivity
+import com.example.ssf.Dialog.CommentMenuDialog
 import com.example.ssf.R
-import com.example.ssf.commentList
+import com.example.ssf.List.commentList
 
 class commentlistAdapter(val comments: Array<commentList>) : RecyclerView.Adapter<commentlistAdapter.viewholder> () {
 

@@ -1,18 +1,15 @@
-package com.example.ssf
+package com.example.ssf.Activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_detail_page.*
 
 
-class DetailPage : AppCompatActivity() {
+class DetailPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_page)

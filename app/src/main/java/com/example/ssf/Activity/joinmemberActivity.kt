@@ -1,10 +1,12 @@
-package com.example.ssf
+package com.example.ssf.Activity
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.CalendarView
 import android.widget.DatePicker
+import android.widget.Toast
+import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_joinmember.*
 import java.util.*
 
@@ -28,6 +30,11 @@ class joinmemberActivity : AppCompatActivity() {
             var builder = DatePickerDialog(this, date_listener, year, month, day)
             builder.show()
 
+        }
+        btn_login.setOnClickListener{
+            val toast = Toast.makeText(this,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this,loginActivity::class.java)
+            startActivity(intent)
         }
 
     }
