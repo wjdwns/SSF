@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <activity android:name=".Activity.Search_SettingActivity"></activity>
+        <activity android:name=".Activity.joinmemberActivity"></activity>
         <activity android:name=".Activity.CommentActivity"></activity>
         <activity android:name=".Activity.Keyword_searchActivity" />
         <activity android:name=".Activity.loginActivity" />
