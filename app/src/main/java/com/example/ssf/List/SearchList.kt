@@ -1,10 +1,11 @@
-package com.example.ssf
+package com.example.ssf.List
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ssf.Adapter.searchlistAdapter
+import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_searchlist.*
 
 class SearchList : AppCompatActivity() {
