@@ -1,12 +1,11 @@
 package com.example.ssf.fragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.ssf.Activity.Keyword_searchActivity
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -34,17 +33,28 @@ class home_fragment : Fragment() {
         }
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        main_search.setOnClickListener{
+            activity?.let{
+                val intent = Intent(context,Keyword_searchActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val context : Context = container!!.getContext()
-        main_search.setOnClickListener{
-            val intent = Intent(context,Keyword_searchActivity::class.java)
-            startActivity(intent)
-        }
-       return inflater.inflate(R.layout.fragment_home, container, false)
+
+
+
+
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     companion object {
