@@ -6,7 +6,6 @@ import android.view.MenuItem
 import com.example.ssf.R
 import com.example.ssf.fragment.home_fragment
 import com.example.ssf.fragment.search_setting_fragment
-import com.example.ssf.fragment.search_setting_fragment1
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search_setting_fragment.*
@@ -24,8 +23,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.fragment_main,search_setting_fragment())
                 transaction.commit()
-                val mFragmentManager = supportFragmentManager
-                mFragmentManager.beginTransaction().replace(R.id.fragment,search_setting_fragment1()).commit()
                 return true
             }
         }
