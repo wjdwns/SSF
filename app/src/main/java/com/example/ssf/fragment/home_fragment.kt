@@ -6,8 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Activity.Keyword_searchActivity
+import com.example.ssf.Adapter.searchlistAdapter
+import com.example.ssf.List.itemList
 import com.example.ssf.R
+import kotlinx.android.synthetic.main.activity_searchlist.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +30,8 @@ class home_fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +58,28 @@ class home_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val realItems = arrayOf(
+            itemList("국가장학금", "D-10", "♥ 56", "#장학금 #국가장학금"),
+            itemList("숭실대학교 백마우수어쩌구", "D-153", "♥ 90", "#장학금 #교내장학금"),
+            itemList("경기도 2차 재난지원금", "D-DAY", "♥ 27", "#재난지원금 #경기도 #코로나"),
+            itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"))
+
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        val recyclerView: RecyclerView = view.findViewById(R.id.main_recyclerview1)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = searchlistAdapter(realItems)
+
+        val recyclerView2: RecyclerView = view.findViewById(R.id.main_recyclerview2)
+        recyclerView2.layoutManager = LinearLayoutManager(activity)
+        recyclerView2.adapter = searchlistAdapter(realItems)
+
+        return view
 
 
 
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        //return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     companion object {
