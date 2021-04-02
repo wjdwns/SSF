@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.fragment_search_setting_fragment.*
@@ -38,6 +41,34 @@ class search_setting_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val items = resources.getStringArray(R.array.spinner_job)
+        val myAdapter = ArrayAdapter<String>(this.requireContext(),android.R.layout.simple_spinner_dropdown_item,items)
+        spinner1?.adapter = myAdapter
+        spinner1?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when(position){
+                    0->{
+
+                    }
+                    1->{
+
+                    }
+                    else->{
+
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+
         return if (inflater != null) {
             inflater.inflate(R.layout.fragment_search_setting_fragment, container, false)
         } else {
