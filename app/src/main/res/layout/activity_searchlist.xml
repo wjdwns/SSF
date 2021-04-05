@@ -7,7 +7,7 @@
     tools:context=".List.SearchList">
 
     <TextView
-        android:id="@+id/tv_pagetitle"
+        android:id="@+id/tv_listTitle"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="#f7ef99"
@@ -29,6 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pagetitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

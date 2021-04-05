@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ssf.Adapter.searchlistAdapter
 import com.example.ssf.R
+import kotlinx.android.synthetic.main.activity_detail_page.*
 import kotlinx.android.synthetic.main.activity_searchlist.*
 
 class SearchList : AppCompatActivity() {
@@ -13,7 +14,7 @@ class SearchList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
 
-        tv_pagetitle.text = "검색 결과"
+        tv_listTitle.text = "검색 결과"
 
         val realItems = arrayOf(
             itemList("국가장학금", "D-10", "♥ 56", "#장학금 #국가장학금"),

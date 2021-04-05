@@ -22,6 +22,7 @@
             android:background="@color/our"
             android:gravity="center"
             android:text="조건 검색"
+            android:textColor="#000000"
             android:textSize="40sp"
             android:textStyle="normal" />
 
@@ -76,7 +77,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="30dp"
                 android:background="@color/our" />
 
@@ -99,7 +100,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="30dp"
                 android:background="@color/our" />
 
@@ -140,7 +141,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="30dp"
                 android:background="@color/our" />
 
@@ -163,7 +164,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="30dp"
                 android:background="@color/our" />
 
