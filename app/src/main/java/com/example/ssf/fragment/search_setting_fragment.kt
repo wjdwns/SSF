@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import com.example.ssf.R
@@ -33,18 +34,23 @@ class search_setting_fragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
 
+
+
         }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val items = resources.getStringArray(R.array.spinner_job)
-        val myAdapter = ArrayAdapter<String>(this.requireContext(),android.R.layout.simple_spinner_dropdown_item,items)
-        spinner1?.adapter = myAdapter
-        spinner1?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        val myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
+        val view = inflater.inflate(R.layout.fragment_search_setting_fragment,container,false)
+        val spinner1 = view.findViewById<Spinner>(R.id.spinner1)
+        spinner1.adapter = myAdapter
+        spinner1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -68,12 +74,93 @@ class search_setting_fragment : Fragment() {
 
             }
         }
+        val spinner2 = view.findViewById<Spinner>(R.id.spinner2)
+        spinner2.adapter = myAdapter
+        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
 
-        return if (inflater != null) {
-            inflater.inflate(R.layout.fragment_search_setting_fragment, container, false)
-        } else {
-            return super.onCreateView(inflater, container, savedInstanceState)
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when(position){
+                    0->{
+
+                    }
+                    1->{
+
+                    }
+                    else->{
+
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
         }
+        val spinner3 = view.findViewById<Spinner>(R.id.spinner3)
+        spinner3.adapter = myAdapter
+        spinner3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when(position){
+                    0->{
+
+                    }
+                    1->{
+
+                    }
+                    else->{
+
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+        val spinner4 = view.findViewById<Spinner>(R.id.spinner4)
+        spinner4.adapter = myAdapter
+        spinner4.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when(position){
+                    0->{
+
+                    }
+                    1->{
+
+                    }
+                    else->{
+
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+        // Inflate the layout for this fragment
+
+
+
+            return view
+
     }
 
     companion object {

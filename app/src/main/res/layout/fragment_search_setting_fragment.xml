@@ -38,11 +38,13 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/view"
         android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,7 +87,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="40dp"
-                android:spinnerMode="dropdown" />
+                android:background="@drawable/spinner_background" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,36 +108,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <Spinner
+                    android:id="@+id/spinner3"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="40dp"
-                    android:layout_weight="1"
-                    android:hint="시도">
+                    android:background="@drawable/spinner_background" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edit_ground"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <Spinner
+                    android:id="@+id/spinner4"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="40dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="40dp"
-                    android:layout_weight="1"
-                    android:hint="시군구">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edit_local"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:background="@drawable/spinner_background" />
             </LinearLayout>
 
             <TextView
@@ -152,20 +144,14 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/our" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <Spinner
+                android:id="@+id/spinner2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="40dp"
-                android:hint="소득분위">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_incomelevel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:background="@drawable/spinner_background" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -209,9 +195,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="검색"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/our"
-                android:layout_marginTop="30dp"/>
+                android:text="검색" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
