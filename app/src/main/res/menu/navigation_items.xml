@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/cart_tab"
+        android:id="@+id/main_cart_tab"
         android:enabled="true"
-        android:icon="@drawable/reserv"
+        android:icon="@drawable/cart"
         android:title="찜바구니" />
     <item
         android:id="@+id/main_home"
@@ -13,6 +13,6 @@
     <item
         android:id="@+id/search_button"
         android:enabled="true"
-        android:icon="@drawable/iconmonstr_link_2_120"
+        android:icon="@drawable/main4"
         android:title="조건맞춤"/>
 </menu>

@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 transaction.commit()
                 return true
             }
-            R.id.cart_tab -> {
+            R.id.main_cart_tab -> {
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.fragment_main,cart_fragment())
                 transaction.commit()

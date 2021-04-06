@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Adapter.CartListAdapter
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.fragment_cart_fragment.*
@@ -32,15 +33,7 @@ class cart_fragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        val cartItems = arrayOf (
-            "쿠키런 킹덤 4000크리스탈 지원금",
-            "어쩌구 제목 지원금",
-            "엥엥엥 쿠쿠루삥뽕빵~"
-        )
 
-        rv_cartlist.layoutManager= LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        rv_cartlist.adapter = CartListAdapter(cartItems)
-        rv_cartlist.setHasFixedSize(true)
 
     }
 
@@ -49,10 +42,22 @@ class cart_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_cart_fragment, container, false)
+        val rv_cartlist = view.findViewById<RecyclerView>(R.id.rv_cartlist)
+        val cartItems = arrayOf (
+            "쿠키런 킹덤 4000크리스탈 지원금",
+            "어쩌구 제목 지원금",
+            "엥엥엥 쿠쿠루삥뽕빵~"
+        )
+
+        rv_cartlist.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        rv_cartlist.adapter = CartListAdapter(cartItems)
+        rv_cartlist.setHasFixedSize(true)
 
 
 
-        return inflater.inflate(R.layout.fragment_cart_fragment, container, false)
+
+        return view
     }
 
     companion object {
