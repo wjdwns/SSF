@@ -15,7 +15,7 @@ class CommentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comment)
-
+//.
         val commentLists = arrayOf(
             commentList("감스트", "오우오우 싸발적이고"),
             commentList("배연두", "이 지원금은 정말 유용했어요!"),
