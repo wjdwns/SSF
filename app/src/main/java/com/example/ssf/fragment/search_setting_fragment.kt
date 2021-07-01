@@ -44,8 +44,8 @@ class search_setting_fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val items = resources.getStringArray(R.array.spinner_job)
-        val myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
+        var items = resources.getStringArray(R.array.spinner_job)
+        var myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
         val view = inflater.inflate(R.layout.fragment_search_setting_fragment,container,false)
         val spinner1 = view.findViewById<Spinner>(R.id.spinner1)
         spinner1.adapter = myAdapter
@@ -74,6 +74,8 @@ class search_setting_fragment : Fragment() {
 
             }
         }
+        items = resources.getStringArray(R.array.spinner_job)
+        myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
         val spinner2 = view.findViewById<Spinner>(R.id.spinner2)
         spinner2.adapter = myAdapter
         spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -101,6 +103,8 @@ class search_setting_fragment : Fragment() {
 
             }
         }
+        items = resources.getStringArray(R.array.spinner_job)
+        myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
         val spinner3 = view.findViewById<Spinner>(R.id.spinner3)
         spinner3.adapter = myAdapter
         spinner3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
