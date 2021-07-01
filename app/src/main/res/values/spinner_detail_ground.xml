@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="spinner_ground">
-        <item>도</item>
-        <item>서울</item>
+    <string-array name="spinner_detail_ground">
+        <item>시군구</item>
         <item>경기도</item>
         <item>강원도</item>
         <item>충청북도</item>
@@ -13,6 +12,4 @@
         <item>전라남도</item>
         <item>제주도</item>
     </string-array>
-
-
 </resources>

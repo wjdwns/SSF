@@ -74,7 +74,7 @@ class search_setting_fragment : Fragment() {
 
             }
         }
-        items = resources.getStringArray(R.array.spinner_job)
+        items = resources.getStringArray(R.array.spinner_ground)
         myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
         val spinner2 = view.findViewById<Spinner>(R.id.spinner2)
         spinner2.adapter = myAdapter
@@ -103,7 +103,7 @@ class search_setting_fragment : Fragment() {
 
             }
         }
-        items = resources.getStringArray(R.array.spinner_job)
+        items = resources.getStringArray(R.array.spinner_detail_ground)
         myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
         val spinner3 = view.findViewById<Spinner>(R.id.spinner3)
         spinner3.adapter = myAdapter
@@ -132,6 +132,8 @@ class search_setting_fragment : Fragment() {
 
             }
         }
+        items = resources.getStringArray(R.array.spinner_income_level)
+        myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
         val spinner4 = view.findViewById<Spinner>(R.id.spinner4)
         spinner4.adapter = myAdapter
         spinner4.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
