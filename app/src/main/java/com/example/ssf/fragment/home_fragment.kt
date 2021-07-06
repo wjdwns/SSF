@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Activity.Keyword_searchActivity
-import com.example.ssf.Adapter.searchlistAdapter
+import com.example.ssf.Activity.joinmemberActivity
+import com.example.ssf.Adapter.SearchlistAdapter
+import com.example.ssf.List.SearchListActivity
 import com.example.ssf.List.itemList
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_searchlist.*
@@ -68,13 +71,25 @@ class home_fragment : Fragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.main_recyclerview1)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = searchlistAdapter(realItems)
+        recyclerView.adapter = SearchlistAdapter(realItems)
 
         val recyclerView2: RecyclerView = view.findViewById(R.id.main_recyclerview2)
         recyclerView2.layoutManager = LinearLayoutManager(activity)
-        recyclerView2.adapter = searchlistAdapter(realItems)
+        recyclerView2.adapter = SearchlistAdapter(realItems)
+
+        val more_view =view.findViewById<TextView>(R.id.main_moreview)
+        val more_view2 =view.findViewById<TextView>(R.id.main_moreview2)
+        more_view.setOnClickListener(View.OnClickListener {
+            val intent = Intent(activity, SearchListActivity::class.java)
+            startActivity(intent)
+        })
+        more_view2.setOnClickListener(View.OnClickListener {
+            val intent = Intent(activity, SearchListActivity::class.java)
+            startActivity(intent)
+        })
 
         return view
+
 
 
 

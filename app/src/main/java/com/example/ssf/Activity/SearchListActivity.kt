@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ssf.Adapter.searchlistAdapter
+import com.example.ssf.Adapter.SearchlistAdapter
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_detail_page.*
 import kotlinx.android.synthetic.main.activity_searchlist.*
 
-class SearchList : AppCompatActivity() {
+class SearchListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
@@ -33,7 +33,7 @@ class SearchList : AppCompatActivity() {
         )
 
         rv_itemlist.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_itemlist.adapter = searchlistAdapter(realItems)
+        rv_itemlist.adapter = SearchlistAdapter(realItems)
 
         val decoDivider = DividerItemDecoration(rv_itemlist.context, 1)
         rv_itemlist.addItemDecoration(decoDivider)

@@ -11,7 +11,7 @@ import com.example.ssf.Dialog.CommentMenuDialog
 import com.example.ssf.R
 import com.example.ssf.List.commentList
 
-class commentlistAdapter(val comments: Array<commentList>) : RecyclerView.Adapter<commentlistAdapter.viewholder> () {
+class CommentListAdapter(val comments: Array<commentList>) : RecyclerView.Adapter<CommentListAdapter.viewholder> () {
 
     class viewholder (val commentView: View) :RecyclerView.ViewHolder(commentView)  {
 

@@ -11,7 +11,7 @@ import com.example.ssf.Activity.DetailPageActivity
 import com.example.ssf.R
 import com.example.ssf.List.itemList
 
-class searchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<searchlistAdapter.viewHolder> () {
+class SearchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<SearchlistAdapter.viewHolder> () {
 
     class viewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
 
