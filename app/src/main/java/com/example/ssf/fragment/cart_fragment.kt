@@ -47,7 +47,7 @@ class cart_fragment : Fragment() {
         val cartItems = arrayOf (
             "쿠키런 킹덤 4000크리스탈 지원금",
             "어쩌구 제목 지원금",
-            "엥엥엥 쿠쿠루삥뽕빵~"
+            "지원금 목록~"
         )
 
         rv_cartlist.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
