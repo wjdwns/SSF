@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ssf.Adapter.commentlistAdapter
+import com.example.ssf.Adapter.CommentListAdapter
 import com.example.ssf.List.commentList
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_comment.*
@@ -24,7 +24,7 @@ class CommentActivity : AppCompatActivity() {
         )
 
         rv_comment.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_comment.adapter = commentlistAdapter(commentLists)
+        rv_comment.adapter = CommentListAdapter(commentLists)
 
         val decoDivider = DividerItemDecoration(rv_comment.context, 1)
         rv_comment.addItemDecoration(decoDivider)

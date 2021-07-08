@@ -14,8 +14,6 @@ class SearchListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
 
-        tv_listTitle.text = "검색 결과"
-
         val realItems = arrayOf(
             itemList("국가장학금", "D-10", "♥ 56", "#장학금 #국가장학금"),
             itemList("숭실대학교 백마우수어쩌구", "D-153", "♥ 90", "#장학금 #교내장학금"),

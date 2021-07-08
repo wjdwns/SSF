@@ -2,6 +2,7 @@ package com.example.ssf.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.example.ssf.R
 import com.example.ssf.fragment.cart_fragment
@@ -11,7 +12,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+    val TAG: String = "로그"
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        Log.d(TAG, "MainActivity - onNavigationItemSelected() called")
         when(item.itemId){
             R.id.main_home ->{
                 val transaction = supportFragmentManager.beginTransaction()
