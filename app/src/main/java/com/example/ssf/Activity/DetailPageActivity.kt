@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_detail_page.*
 
 
 class DetailPageActivity : AppCompatActivity() {
+    val TAG: String = "로그"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_page)
