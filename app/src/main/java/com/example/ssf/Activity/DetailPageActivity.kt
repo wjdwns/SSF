@@ -30,7 +30,7 @@ class DetailPageActivity : AppCompatActivity() {
         wv_detail.webChromeClient = WebChromeClient()
         /* 웹뷰에서 새 창이 뜨지 않도록 하는 구문 */
 
-        wv_detail.loadUrl("https://www.naver.com")       // 링크 주소를 로드함
+        wv_detail.loadUrl("https://www.google.com")       // 링크 주소를 로드함
 
 
         btn_comment.setOnClickListener{
