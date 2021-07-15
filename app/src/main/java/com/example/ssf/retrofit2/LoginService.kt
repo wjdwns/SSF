@@ -1,5 +1,6 @@
-package com.example.ssf
+package com.example.ssf.retrofit2
 
+import com.example.ssf.retrofit2.LoginData
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
