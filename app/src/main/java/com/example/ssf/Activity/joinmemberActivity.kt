@@ -4,23 +4,32 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.DatePicker
 import android.widget.Toast
 import com.example.ssf.R
+import com.example.ssf.retrofit2.IJoinMember
+import com.example.ssf.retrofit2.JoinMember
+import com.example.ssf.retrofit2.LoginService
 import kotlinx.android.synthetic.main.activity_joinmember.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 class joinmemberActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_joinmember)
-        val cal = Calendar.getInstance()
-        val year = cal.get(Calendar.YEAR)
-        val month = cal.get(Calendar.MONTH)+1
-        val day = cal.get(Calendar.DATE)
+        val TAG: String = "로그"
+        var cal = Calendar.getInstance()
+        var year = cal.get(Calendar.YEAR)
+        var month = cal.get(Calendar.MONTH)+1
+        var day = cal.get(Calendar.DATE)
         date_picker_actions.setText("$year-$month-$day")
         date_picker_actions.setOnClickListener {
-
             var date_listener  = object : DatePickerDialog.OnDateSetListener {
                 override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                     val month_1 = month+1
@@ -32,9 +41,37 @@ class joinmemberActivity : AppCompatActivity() {
 
         }
         btn_login.setOnClickListener{
-            val toast = Toast.makeText(this,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,loginActivity::class.java)
-            startActivity(intent)
+            val nickname = nickname.text.toString()
+            val id = edit_id.text.toString()
+            val pw = edit_pw.text.toString()
+            val birth ="$year-$month-$day"
+            Log.d(TAG, "joinmemberActivity - onCreate() called $birth")
+            var retrofit = Retrofit.Builder()
+                .baseUrl("http://221.155.173.160:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val JoinMember = retrofit.create(IJoinMember::class.java)
+
+            JoinMember.requestJoinMember(nickname,id,pw,birth).enqueue(object : Callback<JoinMember>{
+                override fun onResponse(call: Call<JoinMember>, response: Response<JoinMember>) {
+                    val res = response.body()
+                    if(res?.isOK == true){
+                        Toast.makeText(this@joinmemberActivity,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@joinmemberActivity,loginActivity::class.java)
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this@joinmemberActivity,"회원가입이 실패하였습니다. 잠시후 다시 시도해주세요.",Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<JoinMember>, t: Throwable) {
+                    Toast.makeText(this@joinmemberActivity,"통신 실패",Toast.LENGTH_SHORT).show()
+
+                }
+
+            })
         }
 
     }

@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Activity.Keyword_searchActivity
+import com.example.ssf.Activity.SearchListActivity
 import com.example.ssf.Activity.joinmemberActivity
 import com.example.ssf.Adapter.SearchlistAdapter
-import com.example.ssf.List.SearchListActivity
 import com.example.ssf.List.itemList
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_searchlist.*
