@@ -7,14 +7,10 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface IJoinMember {
-    @FormUrlEncoded
-    @POST("/sign-up/")
+    @POST("/sign-up")
     //인풋을 정의
     fun requestJoinMember(
-        @Body("nickname") nickname: String,
-        @Body("id") id:String,
-        @Body("pw") pw:String,
-        @Body("birth") birth:String
+        @Body JoinMember : JoinMember_Data
     ) : Call<JoinMember> //아웃풋을 정의
 
 

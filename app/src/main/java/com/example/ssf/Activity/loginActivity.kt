@@ -8,11 +8,11 @@ import android.widget.Toast
 import com.example.ssf.R
 import com.example.ssf.retrofit2.CheckLogin
 import com.example.ssf.retrofit2.LoginService
+import com.example.ssf.retrofit2.login_Data
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class loginActivity : AppCompatActivity() {
@@ -33,17 +33,16 @@ class loginActivity : AppCompatActivity() {
             var ID = edit_id.text.toString()
             var pwd = edit_pwd.text.toString()
             Log.d(TAG, "loginActivity - btn_login() called")
-            // loginService.requestLogin(ID,pwd).enqueue(object: Callback<CheckLogin>{
-            //    override fun onResponse(call: Call<CheckLogin>, response: Response<CheckLogin>) {
-            //        var login = response.body()
-            //        Toast.makeText(this@loginActivity,"isValid = " + login?.isValid + "nickname = " + login?.nickname +"birth =" + login?.birth, Toast.LENGTH_SHORT).show()
-            //    }
-
-            //    override fun onFailure(call: Call<CheckLogin>, t: Throwable) {
-            //        Toast.makeText(this@loginActivity,"실패!", Toast.LENGTH_SHORT).show()
-            //    }
-
-            //}
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder().addInterceptor(interceptor).build();
+            var retrofit = Retrofit.Builder()
+                .baseUrl("http://221.155.173.160:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+            val login = login_Data(ID,pwd)
+            val loginService = retrofit.create(LoginService::class.java)
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

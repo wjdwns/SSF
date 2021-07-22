@@ -10,8 +10,11 @@ import android.widget.Toast
 import com.example.ssf.R
 import com.example.ssf.retrofit2.IJoinMember
 import com.example.ssf.retrofit2.JoinMember
+import com.example.ssf.retrofit2.JoinMember_Data
 import com.example.ssf.retrofit2.LoginService
 import kotlinx.android.synthetic.main.activity_joinmember.*
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,14 +49,19 @@ class joinmemberActivity : AppCompatActivity() {
             val pw = edit_pw.text.toString()
             val birth ="$year-$month-$day"
             Log.d(TAG, "joinmemberActivity - onCreate() called $birth")
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder().addInterceptor(interceptor).build();
             var retrofit = Retrofit.Builder()
                 .baseUrl("http://221.155.173.160:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build()
 
+            val member = JoinMember_Data(nickname, id, pw, birth)
             val JoinMember = retrofit.create(IJoinMember::class.java)
 
-            JoinMember.requestJoinMember(nickname,id,pw,birth).enqueue(object : Callback<JoinMember>{
+            JoinMember.requestJoinMember(member).enqueue(object : Callback<JoinMember>{
                 override fun onResponse(call: Call<JoinMember>, response: Response<JoinMember>) {
                     val res = response.body()
                     if(res?.isOK == true){
