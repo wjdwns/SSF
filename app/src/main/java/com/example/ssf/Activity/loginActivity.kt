@@ -44,6 +44,17 @@ class loginActivity : AppCompatActivity() {
             val login = login_Data(ID,pwd)
             val loginService = retrofit.create(LoginService::class.java)
 
+            loginService.requestLogin(login).enqueue(object : Callback<login_Data>{
+                override fun onResponse(call: Call<login_Data>, response: Response<login_Data>) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onFailure(call: Call<login_Data>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+            if()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
