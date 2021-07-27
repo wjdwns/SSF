@@ -50,7 +50,7 @@ class cart_fragment : Fragment() {
             "지원금 목록~"
         )
 
-        rv_cartlist.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        rv_cartlist.layoutManager= LinearLayoutManager(activity)
         rv_cartlist.adapter = CartListAdapter(cartItems)
         rv_cartlist.setHasFixedSize(true)
 

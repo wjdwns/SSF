@@ -22,17 +22,8 @@ class SearchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<Sear
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_searchlist, parent, false)
-        return viewHolder(view).apply {
-
-//            view.setOnClickListener {
-//                val curPos : Int = adapterPosition
-//                val itm: itemList = items.get(curPos)
-//
-//                val myIntent: Intent = Intent(view.context, DetailPage::class.java)
-//            }
-
-        }
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_search, parent, false)
+        return viewHolder(view)
         }
 
 

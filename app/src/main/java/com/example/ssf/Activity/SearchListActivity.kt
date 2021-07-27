@@ -25,14 +25,14 @@ class SearchListActivity : AppCompatActivity() {
             itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"),
             itemList("한국대학사회봉사협의회 WFK 청년어쩌궁", "D-9", "♥ 19", "#봉사활동 #대학생"),
             itemList("안드로이드 스튜디오", "D-1", "♥ 1892", "#앱개발 #공부 #현타"),
-            itemList("예시만들어보는중 글이 길어지면 말줄임표가 보이게 해놨습니당^^", "D-34", "♥ 76", "#예시 #태그도길게해보는중 #어디까지 #더길게더길게더길게 #더더더더더더더더더더더더더더ㅓ"),
+            itemList("예시만들어보는중 글이 길어지면 말줄임표가 보이게 해놨습니당^^", "D-34", "♥ 76", "#예시"),
             itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"),
             itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"),
             itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업")
 
         )
         val itemlist = findViewById<RecyclerView>(R.id.rv_itemlist)
-        itemlist.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        itemlist.layoutManager = LinearLayoutManager(this)
         itemlist.adapter = SearchlistAdapter(realItems)
 
         val decoDivider = DividerItemDecoration(rv_itemlist.context, 1)

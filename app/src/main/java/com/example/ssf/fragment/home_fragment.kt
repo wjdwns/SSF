@@ -73,21 +73,29 @@ class home_fragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.main_recyclerview1)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = SearchlistAdapter(realItems)
+        val decoDivider = DividerItemDecoration(recyclerView.context, 1)
+        recyclerView.addItemDecoration(decoDivider)
+
+        recyclerView.setHasFixedSize(true)
 
         val recyclerView2: RecyclerView = view.findViewById(R.id.main_recyclerview2)
         recyclerView2.layoutManager = LinearLayoutManager(activity)
         recyclerView2.adapter = SearchlistAdapter(realItems)
+        val decoDivider2 = DividerItemDecoration(recyclerView2.context, 1)
+        recyclerView2.addItemDecoration(decoDivider2)
+
+        recyclerView2.setHasFixedSize(true)
 
         val more_view =view.findViewById<TextView>(R.id.main_moreview)
         val more_view2 =view.findViewById<TextView>(R.id.main_moreview2)
-        more_view.setOnClickListener(View.OnClickListener {
+        more_view.setOnClickListener {
             val intent = Intent(activity, SearchListActivity::class.java)
             startActivity(intent)
-        })
-        more_view2.setOnClickListener(View.OnClickListener {
+        }
+        more_view2.setOnClickListener{
             val intent = Intent(activity, SearchListActivity::class.java)
             startActivity(intent)
-        })
+        }
 
         return view
 
