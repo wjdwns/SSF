@@ -14,7 +14,6 @@ import com.example.ssf.List.itemList
 class SearchlistAdapter (val items: Array<itemList>) : RecyclerView.Adapter<SearchlistAdapter.viewHolder> () {
 
     class viewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
-
         val title = itemView.findViewById<TextView>(R.id.tv_title)
         val dday = itemView.findViewById<TextView>(R.id.tv_dday)
         val heart = itemView.findViewById<TextView>(R.id.tv_heart)

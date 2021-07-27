@@ -22,13 +22,6 @@ class loginActivity : AppCompatActivity() {
         val TAG: String = "로그"
         Log.d(TAG, "loginActivity - onCreate() called")
 
-        //var retrofit = Retrofit.Builder()
-        //    .baseUrl("http://221.155.173.160:5000")
-        //    .addConverterFactory(GsonConverterFactory.create())
-        //    .build()
-
-        //val loginService = retrofit.create(LoginService::class.java)
-
         btn_login.setOnClickListener{
             var ID = edit_id.text.toString()
             var pwd = edit_pwd.text.toString()
@@ -44,19 +37,27 @@ class loginActivity : AppCompatActivity() {
             val login = login_Data(ID,pwd)
             val loginService = retrofit.create(LoginService::class.java)
 
-            loginService.requestLogin(login).enqueue(object : Callback<login_Data>{
-                override fun onResponse(call: Call<login_Data>, response: Response<login_Data>) {
-                    TODO("Not yet implemented")
+            loginService.requestLogin(login).enqueue(object : Callback<CheckLogin>{
+                override fun onResponse(call: Call<CheckLogin>, response: Response<CheckLogin>) {
+                    val res = response.body()
+                    if(res?.isValid==true)
+                    {
+                        Toast.makeText(this@loginActivity,"로그인이 완료되었습니다.\n" + "닉네임" + res.nickname +"생일"+ res.birth,Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@loginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this@loginActivity,"아이디나 비밀번호가 다릅니다.",Toast.LENGTH_SHORT).show()
+                    }
                 }
 
-                override fun onFailure(call: Call<login_Data>, t: Throwable) {
-                    TODO("Not yet implemented")
+                override fun onFailure(call: Call<CheckLogin>, t: Throwable) {
+                    Toast.makeText(this@loginActivity,"연결 실패.",Toast.LENGTH_SHORT).show()
                 }
+
 
             })
-            if()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+
         }
         joinmem.setOnClickListener{
             Log.d(TAG, "loginActivity - joinmem() called")

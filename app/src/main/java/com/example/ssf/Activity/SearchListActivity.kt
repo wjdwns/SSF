@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Adapter.SearchlistAdapter
 import com.example.ssf.List.itemList
 import com.example.ssf.R
@@ -30,9 +31,9 @@ class SearchListActivity : AppCompatActivity() {
             itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업")
 
         )
-
-        rv_itemlist.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_itemlist.adapter = SearchlistAdapter(realItems)
+        val itemlist = findViewById<RecyclerView>(R.id.rv_itemlist)
+        itemlist.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        itemlist.adapter = SearchlistAdapter(realItems)
 
         val decoDivider = DividerItemDecoration(rv_itemlist.context, 1)
         rv_itemlist.addItemDecoration(decoDivider)
