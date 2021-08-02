@@ -20,7 +20,7 @@ class CommentActivity : AppCompatActivity() {
             commentList("감스트", "오우오우 싸발적이고"),
             commentList("배연두", "이 지원금은 정말 유용했어요!"),
             commentList("이재명", "제가 10만원을 뿌렸답니다"),
-            commentList("익명이", "주변에서 받은 사람 한 번도 못 봄")
+            commentList("익명이", "array list")
         )
 
         rv_comment.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
