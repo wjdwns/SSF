@@ -9,5 +9,5 @@ interface IKeyword_search {
     //인풋을 정의
     fun requestKeyword_Search(
         @Body keywordsearch : Keyword_Search
-    ) : Call<grant_form> //아웃풋을 정의
+    ) : Call<List<grant_form>> //아웃풋을 정의
 }

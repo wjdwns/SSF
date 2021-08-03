@@ -39,15 +39,15 @@ class SearchListActivity : AppCompatActivity() {
             .build()
         val search = Keyword_Search(getintent)
         val searchService = retrofit.create(IKeyword_search::class.java)
-        searchService.requestKeyword_Search(search).enqueue(object : Callback<grant_form> {
+        searchService.requestKeyword_Search(search).enqueue(object : Callback<List<grant_form>> {
             override fun onResponse(
-                call: Call<grant_form>,
-                response: Response<grant_form>
+                call: Call<List<grant_form>>,
+                response: Response<List<grant_form>>
             ) {
                 Toast.makeText(this@SearchListActivity,"연결 성공.", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onFailure(call: Call<grant_form>, t: Throwable) {
+            override fun onFailure(call: Call<List<grant_form>>, t: Throwable) {
                 Toast.makeText(this@SearchListActivity,"연결 실패.", Toast.LENGTH_SHORT).show()
             }
 
