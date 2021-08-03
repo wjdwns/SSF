@@ -2,20 +2,56 @@ package com.example.ssf.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Adapter.SearchlistAdapter
 import com.example.ssf.List.itemList
 import com.example.ssf.R
+import com.example.ssf.retrofit2.IKeyword_search
+import com.example.ssf.retrofit2.Keyword_Search
+import com.example.ssf.retrofit2.grant_form
 import kotlinx.android.synthetic.main.activity_detail_page.*
+import kotlinx.android.synthetic.main.activity_keyword_search.*
 import kotlinx.android.synthetic.main.activity_searchlist.*
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
+        val getintent = intent.getStringExtra("검색어")
+        Toast.makeText(this,getintent,Toast.LENGTH_SHORT).show()
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build();
+        var retrofit = Retrofit.Builder()
+            .baseUrl("http://221.155.173.160:5000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        val search = Keyword_Search(getintent)
+        val searchService = retrofit.create(IKeyword_search::class.java)
+        searchService.requestKeyword_Search(search).enqueue(object : Callback<grant_form> {
+            override fun onResponse(
+                call: Call<grant_form>,
+                response: Response<grant_form>
+            ) {
+                Toast.makeText(this@SearchListActivity,"연결 성공.", Toast.LENGTH_SHORT).show()
+            }
 
+            override fun onFailure(call: Call<grant_form>, t: Throwable) {
+                Toast.makeText(this@SearchListActivity,"연결 실패.", Toast.LENGTH_SHORT).show()
+            }
+
+        })
         val realItems = arrayOf(
             itemList("국가장학금", "D-10", "♥ 56", "#장학금 #국가장학금"),
             itemList("숭실대학교 백마우수어쩌구", "D-153", "♥ 90", "#장학금 #교내장학금"),
