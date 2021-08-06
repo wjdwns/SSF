@@ -2,6 +2,7 @@ package com.example.ssf.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
@@ -14,7 +15,7 @@ class DetailPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_page)
-
+        Log.d(TAG, "DetailPageActivity - onCreate() called")
 
         tv_title.text = intent.getStringExtra("title")
         tv_dday.text = intent.getStringExtra("dday")
