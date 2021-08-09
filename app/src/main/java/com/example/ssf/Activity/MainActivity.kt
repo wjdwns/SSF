@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val mFragmentManager = supportFragmentManager
         mFragmentManager.beginTransaction().replace(R.id.fragment_main, home_fragment()).commit()
         nav_view.setOnNavigationItemSelectedListener(this)
-
+        Log.d(TAG, "MainActivity - onCreate() called")
 
     }
 
