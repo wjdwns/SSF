@@ -2,6 +2,7 @@ package com.example.ssf.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +26,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val TAG: String = "로그"
+        Log.d(TAG, "SearchListActivity - onCreate() called")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
         val getintent = intent.getStringExtra("검색어")
