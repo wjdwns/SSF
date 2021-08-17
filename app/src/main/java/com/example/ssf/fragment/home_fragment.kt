@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,11 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Activity.Keyword_searchActivity
 import com.example.ssf.Activity.SearchListActivity
-import com.example.ssf.Activity.joinmemberActivity
 import com.example.ssf.Adapter.SearchlistAdapter
 import com.example.ssf.List.itemList
 import com.example.ssf.R
-import kotlinx.android.synthetic.main.activity_searchlist.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -62,11 +59,11 @@ class home_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val realItems = arrayOf(
-            itemList("국가장학금", "D-10", "♥ 56", "#장학금 #국가장학금"),
-            itemList("숭실대학교 백마우수어쩌구", "D-153", "♥ 90", "#장학금 #교내장학금"),
-            itemList("경기도 2차 재난지원금", "D-DAY", "♥ 27", "#재난지원금 #경기도 #코로나"),
-            itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"))
+        val realItems = arrayListOf(
+            itemList("국가장학금",  "♥ 56","www."),
+            itemList("숭실대학교 백마우수어쩌구",  "♥ 90","www."),
+            itemList("경기도 2차 재난지원금",  "♥ 27","www."),
+            itemList("청년창업지원금",  "♥ 8","www."))
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 

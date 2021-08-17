@@ -18,9 +18,9 @@ class DetailPageActivity : AppCompatActivity() {
         Log.d(TAG, "DetailPageActivity - onCreate() called")
 
         tv_title.text = intent.getStringExtra("title")
-        tv_dday.text = intent.getStringExtra("dday")
         tv_heart.text = intent.getStringExtra("heart")
-        tv_tag.text = intent.getStringExtra("tags")
+        val url = intent.getStringExtra("href")
+
 
 
 
@@ -31,7 +31,7 @@ class DetailPageActivity : AppCompatActivity() {
         wv_detail.webChromeClient = WebChromeClient()
         /* 웹뷰에서 새 창이 뜨지 않도록 하는 구문 */
 
-        wv_detail.loadUrl("https://www.google.com")       // 링크 주소를 로드함
+        wv_detail.loadUrl("$url")       // 링크 주소를 로드함
 
 
         btn_comment.setOnClickListener{

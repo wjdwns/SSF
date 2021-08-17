@@ -40,14 +40,22 @@ class SearchListActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-        val search = Keyword_Search(getintent)
+        val keyword = Keyword_Search(getintent)
+        println(keyword)
         val searchService = retrofit.create(IKeyword_search::class.java)
-        searchService.requestKeyword_Search(search).enqueue(object : Callback<List<grant_form>> {
+        var realItems = ArrayList<itemList>()
+        searchService.requestKeyword_Search(keyword).enqueue(object : Callback<List<grant_form>> {
             override fun onResponse(
                 call: Call<List<grant_form>>,
                 response: Response<List<grant_form>>
             ) {
                 Toast.makeText(this@SearchListActivity,"연결 성공.", Toast.LENGTH_SHORT).show()
+                val res = response.body()
+                println(res?.size)
+                for(i in 1..res?.size!!){
+                    realItems.add(itemList(res?.get(i-1).title,res?.get(i-1).host,res?.get(i-1).href))
+                }
+
             }
 
             override fun onFailure(call: Call<List<grant_form>>, t: Throwable) {
@@ -55,29 +63,16 @@ class SearchListActivity : AppCompatActivity() {
             }
 
         })
-        val realItems = arrayOf(
-            itemList("국가장학금", "D-10", "♥ 56", "#장학금 #국가장학금"),
-            itemList("숭실대학교 백마우수어쩌구", "D-153", "♥ 90", "#장학금 #교내장학금"),
-            itemList("경기도 2차 재난지원금", "D-DAY", "♥ 27", "#재난지원금 #경기도 #코로나"),
-            itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"),
-            itemList("아이디어고갈", "D-DAY", "♥ 3476", "#배연두 #화이팅 #싸발적"),
-            itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"),
-            itemList("한국대학사회봉사협의회 WFK 청년어쩌궁", "D-9", "♥ 19", "#봉사활동 #대학생"),
-            itemList("안드로이드 스튜디오", "D-1", "♥ 1892", "#앱개발 #공부 #현타"),
-            itemList("예시만들어보는중 글이 길어지면 말줄임표가 보이게 해놨습니당^^", "D-34", "♥ 76", "#예시"),
-            itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"),
-            itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업"),
-            itemList("청년창업지원금", "D-43", "♥ 8", "#지원금 #20대 #창업")
-
-        )
         val itemlist = findViewById<RecyclerView>(R.id.rv_itemlist)
-        itemlist.layoutManager = LinearLayoutManager(this)
+        itemlist.layoutManager = LinearLayoutManager(this@SearchListActivity)
         itemlist.adapter = SearchlistAdapter(realItems)
 
         val decoDivider = DividerItemDecoration(rv_itemlist.context, 1)
         rv_itemlist.addItemDecoration(decoDivider)
 
         rv_itemlist.setHasFixedSize(true)
+
+
 
     }
 }
