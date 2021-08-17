@@ -7,6 +7,7 @@ data class grant_form(
     val host: String,
     val href: String,
     val all_idx: Int,
+    val like: Int,
     val title: String,
     val type: String,
     val work: String

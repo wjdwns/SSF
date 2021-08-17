@@ -14,15 +14,15 @@
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:adjustViewBounds="true"
-            android:maxWidth="140dp"
-            android:maxHeight="140dp"
-            android:src="@drawable/ssf" />
-
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
+            android:src="@drawable/ssf"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/main_search"
@@ -85,7 +85,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
-                            android:text="인기 지원금/장학금"
+                            android:text="인기 지원금"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -136,9 +136,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:layout_weight="3"
-                            android:text="신규 지원금/장학금"
+                            android:text="신규 지원금"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 

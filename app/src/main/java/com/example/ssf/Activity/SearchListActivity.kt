@@ -26,11 +26,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val TAG: String = "로그"
-        Log.d(TAG, "SearchListActivity - onCreate() called")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
+        val TAG: String = "로그"
+        Log.d(TAG, "SearchListActivity - onCreate() called")
         val getintent = intent.getStringExtra("검색어")
+        val getintent2 = intent.getIntExtra("유저넘버",0)
+        Log.d(TAG, "MainActivity - onCreate() called $getintent2")
         Toast.makeText(this,getintent,Toast.LENGTH_SHORT).show()
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -53,7 +55,7 @@ class SearchListActivity : AppCompatActivity() {
                 val res = response.body()
                 println(res?.size)
                 for(i in 1..res?.size!!){
-                    realItems.add(itemList(res?.get(i-1).title,res?.get(i-1).host,res?.get(i-1).href))
+                    realItems.add(itemList(res?.get(i-1).title,res?.get(i-1).host,res?.get(i-1).href,getintent2,res?.get(i-1).all_idx))
                 }
 
             }

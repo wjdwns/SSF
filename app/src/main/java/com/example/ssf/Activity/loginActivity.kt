@@ -44,6 +44,7 @@ class loginActivity : AppCompatActivity() {
                     {
                         Toast.makeText(this@loginActivity,"로그인이 완료되었습니다.\n" + "닉네임 :" + res.nickname +"\n생일 :"+ res.birth + "\n유저 넘버 : " + res.usernum,Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@loginActivity, MainActivity::class.java)
+                        intent.putExtra("유저넘버", res.usernum)
                         startActivity(intent)
                     }
                     else{

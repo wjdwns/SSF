@@ -2,6 +2,7 @@ package com.example.ssf.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,9 @@ class home_fragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+            val getbundle = arguments?.getInt("유저넘버")
+            val TAG: String = "로그"
+            Log.d(TAG, "home_fragment - onCreate() called $getbundle")
         }
     }
 
@@ -47,6 +51,8 @@ class home_fragment : Fragment() {
         main_search.setOnClickListener{
             activity?.let{
                 val intent = Intent(context,Keyword_searchActivity::class.java)
+                val getbundle = arguments?.getInt("유저넘버")
+                intent.putExtra("유저넘버", getbundle)
                 startActivity(intent)
             }
         }
@@ -60,10 +66,10 @@ class home_fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val realItems = arrayListOf(
-            itemList("국가장학금",  "♥ 56","www."),
-            itemList("숭실대학교 백마우수어쩌구",  "♥ 90","www."),
-            itemList("경기도 2차 재난지원금",  "♥ 27","www."),
-            itemList("청년창업지원금",  "♥ 8","www."))
+            itemList("국가장학금",  "♥ 56","www.",1,1),
+            itemList("숭실대학교 백마우수어쩌구",  "♥ 90","www.",1,1),
+            itemList("경기도 2차 재난지원금",  "♥ 27","www.",1,1),
+            itemList("청년창업지원금",  "♥ 8","www.",1,1))
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 

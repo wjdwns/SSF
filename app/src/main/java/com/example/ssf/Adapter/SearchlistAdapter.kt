@@ -1,6 +1,7 @@
 package com.example.ssf.Adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,9 @@ class SearchlistAdapter(val items: ArrayList<itemList>) : RecyclerView.Adapter<S
             intent.putExtra("href",items.get(position).href)
             intent.putExtra("title", items.get(position).title)
             intent.putExtra("heart", items.get(position).heart)
+            intent.putExtra("유저넘버",items.get(position).usernum)
+            intent.putExtra("ALL_idx",items.get(position).ALL_idx)
+            val TAG: String = "로그"
 
 
 
