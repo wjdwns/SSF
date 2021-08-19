@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     val TAG: String = "로그"
-    val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,21 +21,25 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val mFragmentManager = supportFragmentManager
         val getintent = intent.getIntExtra("유저넘버",0)
         val fragment = home_fragment()
+        val bundle = Bundle()
         bundle.putInt("유저넘버",getintent)
         fragment.arguments = bundle
         mFragmentManager.beginTransaction().replace(R.id.fragment_main, home_fragment()).commit()
         nav_view.setOnNavigationItemSelectedListener(this)
-        Log.d(TAG, "MainActivity - onCreate() called")
         Log.d(TAG, "MainActivity - onCreate() called $getintent")
 
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         Log.d(TAG, "MainActivity - onNavigationItemSelected() called")
         val getintent = intent.getIntExtra("유저넘버",0)
+        println(getintent)
+        val bundle = Bundle()
         when(item.itemId){
             R.id.main_home ->{
                 val transaction = supportFragmentManager.beginTransaction()
                 val fragment = home_fragment()
+                bundle.putInt("유저넘버",getintent)
+                fragment.arguments = bundle
                 transaction.replace(R.id.fragment_main,fragment)
                 transaction.commit()
 

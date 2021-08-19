@@ -43,6 +43,9 @@ class home_fragment : Fragment() {
             val getbundle = arguments?.getInt("유저넘버")
             val TAG: String = "로그"
             Log.d(TAG, "home_fragment - onCreate() called $getbundle")
+            val intent = Intent(context,Keyword_searchActivity::class.java)
+            intent.putExtra("유저넘버", getbundle)
+
         }
     }
 
@@ -52,8 +55,9 @@ class home_fragment : Fragment() {
             activity?.let{
                 val intent = Intent(context,Keyword_searchActivity::class.java)
                 val getbundle = arguments?.getInt("유저넘버")
+                println("유저넘버 : $getbundle")
                 intent.putExtra("유저넘버", getbundle)
-                startActivity(intent)
+                activity!!.startActivity(intent)
             }
         }
 
