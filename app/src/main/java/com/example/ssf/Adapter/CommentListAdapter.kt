@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Activity.CommentActivity
 import com.example.ssf.Dialog.CommentMenuDialog
 import com.example.ssf.R
-import com.example.ssf.List.commentList
+import com.example.ssf.List.CommentList
 
-class CommentListAdapter(val comments: Array<commentList>) : RecyclerView.Adapter<CommentListAdapter.viewholder> () {
+class CommentListAdapter(val comments: Array<CommentList>) : RecyclerView.Adapter<CommentListAdapter.viewholder> () {
 
     class viewholder (val commentView: View) :RecyclerView.ViewHolder(commentView)  {
 

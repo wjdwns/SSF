@@ -1,7 +1,6 @@
 package com.example.ssf.Adapter
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Activity.DetailPageActivity
+import com.example.ssf.List.ItemList
 import com.example.ssf.R
-import com.example.ssf.List.itemList
 
-class SearchlistAdapter(val items: ArrayList<itemList>) : RecyclerView.Adapter<SearchlistAdapter.viewHolder> () {
+class SearchlistAdapter(val items: ArrayList<ItemList>) : RecyclerView.Adapter<SearchlistAdapter.viewHolder> () {
 
     class viewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val title = itemView.findViewById<TextView>(R.id.grant_title)
@@ -31,11 +30,6 @@ class SearchlistAdapter(val items: ArrayList<itemList>) : RecyclerView.Adapter<S
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        holder.title.text = items.get(position).title
-        holder.heart.text = items.get(position).heart
-
-
-
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailPageActivity::class.java)
             intent.putExtra("href",items.get(position).href)
@@ -43,9 +37,6 @@ class SearchlistAdapter(val items: ArrayList<itemList>) : RecyclerView.Adapter<S
             intent.putExtra("heart", items.get(position).heart)
             intent.putExtra("유저넘버",items.get(position).usernum)
             intent.putExtra("ALL_idx",items.get(position).ALL_idx)
-            val TAG: String = "로그"
-
-
 
             ContextCompat.startActivity(holder.itemView.context, intent, null)
         }

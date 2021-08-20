@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Activity.Keyword_searchActivity
 import com.example.ssf.Activity.SearchListActivity
 import com.example.ssf.Adapter.SearchlistAdapter
-import com.example.ssf.List.itemList
+import com.example.ssf.List.ItemList
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -70,10 +70,10 @@ class home_fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val realItems = arrayListOf(
-            itemList("국가장학금",  "♥ 56","www.",1,1),
-            itemList("숭실대학교 백마우수어쩌구",  "♥ 90","www.",1,1),
-            itemList("경기도 2차 재난지원금",  "♥ 27","www.",1,1),
-            itemList("청년창업지원금",  "♥ 8","www.",1,1))
+            ItemList("국가장학금",  "♥ 56","www.",1,1),
+            ItemList("숭실대학교 백마우수어쩌구",  "♥ 90","www.",1,1),
+            ItemList("경기도 2차 재난지원금",  "♥ 27","www.",1,1),
+            ItemList("청년창업지원금",  "♥ 8","www.",1,1))
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 

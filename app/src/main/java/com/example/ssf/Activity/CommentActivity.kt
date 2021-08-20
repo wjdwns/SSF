@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ssf.Adapter.CommentListAdapter
-import com.example.ssf.List.commentList
+import com.example.ssf.List.CommentList
 import com.example.ssf.R
 import kotlinx.android.synthetic.main.activity_comment.*
 
@@ -17,10 +17,10 @@ class CommentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_comment)
 //.
         val commentLists = arrayOf(
-            commentList("감스트", "오우오우 싸발적이고"),
-            commentList("배연두", "이 지원금은 정말 유용했어요!"),
-            commentList("이재명", "제가 10만원을 뿌렸답니다"),
-            commentList("익명이", "array list")
+            CommentList("감스트", "오우오우 싸발적이고"),
+            CommentList("배연두", "이 지원금은 정말 유용했어요!"),
+            CommentList("이재명", "제가 10만원을 뿌렸답니다"),
+            CommentList("익명이", "array list")
         )
 
         rv_comment.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

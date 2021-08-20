@@ -1,17 +1,18 @@
 package com.example.ssf.Adapter
 
-import android.icu.text.Transliterator
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ssf.List.itemList
+import com.example.ssf.Activity.DetailPageActivity
+import com.example.ssf.List.ItemList
 import com.example.ssf.R
-import kotlinx.android.synthetic.main.fragment_cart_fragment.view.*
 
-class CartListAdapter (val items: Array<String>)  : RecyclerView.Adapter<CartListAdapter.viewHolder> () {
+class CartListAdapter (val items: ArrayList<ItemList>)  : RecyclerView.Adapter<CartListAdapter.viewHolder> () {
 
     class viewHolder(itemView : View)  :RecyclerView.ViewHolder(itemView){
         val title = itemView.findViewById<TextView>(R.id.tv_cartlist)
@@ -28,7 +29,16 @@ class CartListAdapter (val items: Array<String>)  : RecyclerView.Adapter<CartLis
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        holder.title.text = items.get(position)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context,DetailPageActivity::class.java)
+            intent.putExtra("href",items.get(position).href)
+            intent.putExtra("title", items.get(position).title)
+            intent.putExtra("heart", items.get(position).heart)
+            intent.putExtra("유저넘버",items.get(position).usernum)
+            intent.putExtra("ALL_idx",items.get(position).ALL_idx)
+
+            ContextCompat.startActivity(holder.itemView.context, intent, null)
+        }
 
     }
 

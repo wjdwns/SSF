@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Adapter.SearchlistAdapter
-import com.example.ssf.List.itemList
+import com.example.ssf.List.ItemList
 import com.example.ssf.R
 import com.example.ssf.retrofit2.IKeyword_search
 import com.example.ssf.retrofit2.Keyword_Search
@@ -45,7 +45,7 @@ class SearchListActivity : AppCompatActivity() {
         val keyword = Keyword_Search(getintent)
         println(keyword)
         val searchService = retrofit.create(IKeyword_search::class.java)
-        var realItems = ArrayList<itemList>()
+        var realItems = ArrayList<ItemList>()
         searchService.requestKeyword_Search(keyword).enqueue(object : Callback<List<grant_form>> {
             override fun onResponse(
                 call: Call<List<grant_form>>,
@@ -55,7 +55,8 @@ class SearchListActivity : AppCompatActivity() {
                 val res = response.body()
                 println(res?.size)
                 for(i in 1..res?.size!!){
-                    realItems.add(itemList(res?.get(i-1).title,res?.get(i-1).host,res?.get(i-1).href,getintent2,res?.get(i-1).all_idx))
+                    realItems.add(ItemList(res?.get(i-1).title,
+                        res?.get(i-1).host,res?.get(i-1).href,getintent2,res?.get(i-1).all_idx))
                 }
 
             }

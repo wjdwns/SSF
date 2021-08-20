@@ -1,15 +1,25 @@
 package com.example.ssf.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Adapter.CartListAdapter
+import com.example.ssf.List.CartList
+import com.example.ssf.List.ItemList
 import com.example.ssf.R
+import com.example.ssf.retrofit2.Cart_ListService
+import com.example.ssf.retrofit2.Cart_Output
 import kotlinx.android.synthetic.main.fragment_cart_fragment.*
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +38,8 @@ class cart_fragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val TAG: String = "로그"
+        Log.d(TAG, "cart_fragment - onCreate() called")
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -42,16 +54,45 @@ class cart_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val TAG: String = "로그"
         val view = inflater.inflate(R.layout.fragment_cart_fragment, container, false)
         val rv_cartlist = view.findViewById<RecyclerView>(R.id.rv_cartlist)
-        val cartItems = arrayOf (
-            "쿠키런 킹덤 4000크리스탈 지원금",
-            "어쩌구 제목 지원금",
-            "지원금 목록~"
-        )
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build();
+        var retrofit = Retrofit.Builder()
+            .baseUrl("http://221.155.173.160:5000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        val Items = ArrayList<ItemList>()
+        val usernum = arguments?.getInt("유저넘버")
+        Log.d(TAG, "cart_fragment - onCreateView() called $usernum")
+        val CartService = retrofit.create(Cart_ListService::class.java)
+        if (usernum != null) {
+            CartService.requestCart(usernum).enqueue(object : Callback<List<Cart_Output>>{
+                override fun onResponse(
+                    call: Call<List<Cart_Output>>,
+                    response: Response<List<Cart_Output>>
+                ) {
+                    Toast.makeText(context,"연결성공",Toast.LENGTH_SHORT).show()
+                    val res = response.body()
+                    for(i in 1..res?.size!!){
+                        Items.add(ItemList(res?.get(i-1).title,
+                            res?.get(i-1).host,res?.get(i-1).href,usernum,res?.get(i-1).all_idx))
+                    }
 
+                }
+
+                override fun onFailure(call: Call<List<Cart_Output>>, t: Throwable) {
+                    Toast.makeText(context,"연결실패",Toast.LENGTH_SHORT).show()
+                }
+
+            }
+            )
+        }
         rv_cartlist.layoutManager= LinearLayoutManager(activity)
-        rv_cartlist.adapter = CartListAdapter(cartItems)
+        rv_cartlist.adapter = CartListAdapter(Items)
         rv_cartlist.setHasFixedSize(true)
 
 
