@@ -46,6 +46,7 @@ class loginActivity : AppCompatActivity() {
                         val intent = Intent(this@loginActivity, MainActivity::class.java)
                         intent.putExtra("유저넘버", res.usernum)
                         startActivity(intent)
+                        finish()
                     }
                     else{
                         Toast.makeText(this@loginActivity,"아이디나 비밀번호가 다릅니다.",Toast.LENGTH_SHORT).show()
@@ -65,7 +66,7 @@ class loginActivity : AppCompatActivity() {
             Toast.makeText(this@loginActivity,"비회원으로 입장하셨습니다.",Toast.LENGTH_SHORT).show()
             val intent = Intent(this, joinmemberActivity::class.java)
             startActivity(intent)
-
+            finish()
         }
         nomem.setOnClickListener{
             Log.d(TAG, "loginActivity - nomem() called")

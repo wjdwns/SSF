@@ -5,8 +5,8 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface Cart_ListService {
-    @POST("/Like/Update")
+    @POST("/Like/Users")
     fun requestCart(
-        @Body User :Int
+        @Body User : Cart_Input
     ) : Call<List<Cart_Output>>
 }

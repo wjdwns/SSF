@@ -15,7 +15,7 @@ class SearchlistAdapter(val items: ArrayList<ItemList>) : RecyclerView.Adapter<S
 
     class viewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val title = itemView.findViewById<TextView>(R.id.grant_title)
-        val heart = itemView.findViewById<TextView>(R.id.grant_heart)
+        val host = itemView.findViewById<TextView>(R.id.grant_host)
 
     }
 
@@ -30,11 +30,13 @@ class SearchlistAdapter(val items: ArrayList<ItemList>) : RecyclerView.Adapter<S
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
+        holder.title.text = items.get(position).title
+        holder.host.text = items.get(position).host
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailPageActivity::class.java)
             intent.putExtra("href",items.get(position).href)
             intent.putExtra("title", items.get(position).title)
-            intent.putExtra("heart", items.get(position).heart)
+            intent.putExtra("host", items.get(position).host)
             intent.putExtra("유저넘버",items.get(position).usernum)
             intent.putExtra("ALL_idx",items.get(position).ALL_idx)
 

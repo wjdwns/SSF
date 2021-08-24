@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ssf.R
 import com.example.ssf.retrofit2.TabService
 import com.example.ssf.retrofit2.Tab_Data
 import com.example.ssf.retrofit2.Tab_Output
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_detail_page.*
 import okhttp3.OkHttpClient
@@ -31,9 +30,9 @@ class DetailPageActivity : AppCompatActivity(), BottomNavigationView.OnNavigatio
         setContentView(R.layout.activity_detail_page)
         Log.d(TAG, "DetailPageActivity - onCreate() called")
         tv_title.text = intent.getStringExtra("title")
-        tv_heart.text = intent.getStringExtra("heart")
+        tv_host.text = intent.getStringExtra("host")
         val url = intent.getStringExtra("href")
-        val usernum = intent.getIntExtra("유저넘버",0)
+        val usernum = intent.getIntExtra("유저넘버", 0)
         Log.d(TAG, "DetailPageActivity - onCreate() called $usernum")
         wv_detail.settings.javaScriptEnabled = true       // 자바 스크립트 허용
 
@@ -54,37 +53,42 @@ class DetailPageActivity : AppCompatActivity(), BottomNavigationView.OnNavigatio
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         Log.d(TAG, "DetailPageActivity - onNavigationItemSelected() called")
-        val usernum = intent.getIntExtra("유저넘버",0)
-        val ALL_idx = intent.getIntExtra("ALL_idx",0)
+        val usernum = intent.getIntExtra("유저넘버", 0)
+        val ALL_idx = intent.getIntExtra("ALL_idx", 0)
         val retrofit = Server_respond()
-        val Tab = Tab_Data(usernum,ALL_idx)
+        val Tab = Tab_Data(usernum, ALL_idx)
         val TabService = retrofit.create(TabService::class.java)
         when(item.itemId){
-            R.id.cart_tab ->{
-                TabService.requestTab(Tab).enqueue(object : Callback<Tab_Output>{
+            R.id.cart_tab -> {
+                TabService.requestTab(Tab).enqueue(object : Callback<Tab_Output> {
                     override fun onResponse(
                         call: Call<Tab_Output>,
                         response: Response<Tab_Output>
                     ) {
                         val res = response.body()
-                        if(res?.Check == true){
-                            Toast.makeText(this@DetailPageActivity,"찜 성공.", Toast.LENGTH_SHORT).show()
+                        if (res?.Check == true) {
+                            Toast.makeText(this@DetailPageActivity, "찜 성공.", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     }
 
                     override fun onFailure(call: Call<Tab_Output>, t: Throwable) {
-                        Toast.makeText(this@DetailPageActivity,"연결 실패.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DetailPageActivity, "연결 실패.", Toast.LENGTH_SHORT).show()
                     }
 
                 })
                 return true
 
             }
-            R.id.home ->{
+            R.id.home -> {
                 return true
 
             }
-            R.id.share ->{
+            R.id.share -> {
+                val sharingIntent = Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, intent.getStringExtra("href"));
+                startActivity(Intent.createChooser(sharingIntent,"친구에게 공유하기"))
                 return true
 
             }

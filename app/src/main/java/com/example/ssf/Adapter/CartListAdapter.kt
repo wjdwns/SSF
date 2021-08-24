@@ -1,6 +1,7 @@
 package com.example.ssf.Adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,6 @@ class CartListAdapter (val items: ArrayList<ItemList>)  : RecyclerView.Adapter<C
 
     class viewHolder(itemView : View)  :RecyclerView.ViewHolder(itemView){
         val title = itemView.findViewById<TextView>(R.id.tv_cartlist)
-        val menu = itemView.findViewById<ImageButton>(R.id.btn_yellowdot)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -29,11 +29,14 @@ class CartListAdapter (val items: ArrayList<ItemList>)  : RecyclerView.Adapter<C
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
+        val TAG: String = "로그"
+        holder.title.text = items.get(position).title
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context,DetailPageActivity::class.java)
+            Log.d(TAG, "CartListAdapter - onBindViewHolder() called" + items.get(position).title)
             intent.putExtra("href",items.get(position).href)
             intent.putExtra("title", items.get(position).title)
-            intent.putExtra("heart", items.get(position).heart)
+            intent.putExtra("host", items.get(position).host)
             intent.putExtra("유저넘버",items.get(position).usernum)
             intent.putExtra("ALL_idx",items.get(position).ALL_idx)
 

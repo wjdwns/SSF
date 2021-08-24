@@ -7,14 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ssf.Adapter.CartListAdapter
 import com.example.ssf.List.CartList
 import com.example.ssf.List.ItemList
 import com.example.ssf.R
+import com.example.ssf.retrofit2.Cart_Input
 import com.example.ssf.retrofit2.Cart_ListService
 import com.example.ssf.retrofit2.Cart_Output
+import kotlinx.android.synthetic.main.activity_searchlist.*
 import kotlinx.android.synthetic.main.fragment_cart_fragment.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -46,7 +49,6 @@ class cart_fragment : Fragment() {
         }
 
 
-
     }
 
     override fun onCreateView(
@@ -65,39 +67,48 @@ class cart_fragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-        val Items = ArrayList<ItemList>()
+
+        val raItems = arrayListOf(
+            ItemList("국가장학금", "서울시장", "www.", 1, 1),
+            ItemList("숭실대학교 백마우수어쩌구", "숭실대 총장", "www.", 1, 1),
+            ItemList("경기도 2차 재난지원금", "경기도장", "www.", 1, 1),
+            ItemList("청년창업지원금", "청년지원장", "www.", 1, 1)
+        )
         val usernum = arguments?.getInt("유저넘버")
+        val Input = Cart_Input(usernum!!)
         Log.d(TAG, "cart_fragment - onCreateView() called $usernum")
         val CartService = retrofit.create(Cart_ListService::class.java)
-        if (usernum != null) {
-            CartService.requestCart(usernum).enqueue(object : Callback<List<Cart_Output>>{
-                override fun onResponse(
-                    call: Call<List<Cart_Output>>,
-                    response: Response<List<Cart_Output>>
-                ) {
-                    Toast.makeText(context,"연결성공",Toast.LENGTH_SHORT).show()
-                    val res = response.body()
-                    for(i in 1..res?.size!!){
-                        Items.add(ItemList(res?.get(i-1).title,
-                            res?.get(i-1).host,res?.get(i-1).href,usernum,res?.get(i-1).all_idx))
-                    }
-
+        CartService.requestCart(Input).enqueue(object : Callback<List<Cart_Output>> {
+            override fun onResponse(
+                call: Call<List<Cart_Output>>,
+                response: Response<List<Cart_Output>>
+            ) {
+                Toast.makeText(context, "연결성공", Toast.LENGTH_SHORT).show()
+                val res = response.body()
+                println(res?.size)
+                var realItems = ArrayList<ItemList>()
+                for (i in 1..res?.size!!) {
+                    realItems.add(
+                        ItemList(
+                            res?.get(i - 1).title,
+                            res?.get(i - 1).host,
+                            res?.get(i - 1).href,
+                            usernum,
+                            res?.get(i - 1).all_idx
+                        )
+                    )
                 }
-
-                override fun onFailure(call: Call<List<Cart_Output>>, t: Throwable) {
-                    Toast.makeText(context,"연결실패",Toast.LENGTH_SHORT).show()
-                }
-
+                rv_cartlist.layoutManager = LinearLayoutManager(activity)
+                rv_cartlist.adapter = CartListAdapter(realItems)
+                rv_cartlist.setHasFixedSize(true)
             }
-            )
+
+            override fun onFailure(call: Call<List<Cart_Output>>, t: Throwable) {
+                Toast.makeText(context, "연결실패", Toast.LENGTH_SHORT).show()
+            }
+
         }
-        rv_cartlist.layoutManager= LinearLayoutManager(activity)
-        rv_cartlist.adapter = CartListAdapter(Items)
-        rv_cartlist.setHasFixedSize(true)
-
-
-
-
+        )
         return view
     }
 

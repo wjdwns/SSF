@@ -31,9 +31,9 @@ class SearchListActivity : AppCompatActivity() {
         val TAG: String = "로그"
         Log.d(TAG, "SearchListActivity - onCreate() called")
         val getintent = intent.getStringExtra("검색어")
-        val getintent2 = intent.getIntExtra("유저넘버",0)
+        val getintent2 = intent.getIntExtra("유저넘버", 0)
         Log.d(TAG, "MainActivity - onCreate() called $getintent2")
-        Toast.makeText(this,getintent,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getintent, Toast.LENGTH_SHORT).show()
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -51,18 +51,25 @@ class SearchListActivity : AppCompatActivity() {
                 call: Call<List<grant_form>>,
                 response: Response<List<grant_form>>
             ) {
-                Toast.makeText(this@SearchListActivity,"연결 성공.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SearchListActivity, "연결 성공.", Toast.LENGTH_SHORT).show()
                 val res = response.body()
                 println(res?.size)
-                for(i in 1..res?.size!!){
-                    realItems.add(ItemList(res?.get(i-1).title,
-                        res?.get(i-1).host,res?.get(i-1).href,getintent2,res?.get(i-1).all_idx))
+                for (i in 1..res?.size!!) {
+                    realItems.add(
+                        ItemList(
+                            res?.get(i - 1).title,
+                            res?.get(i - 1).host,
+                            res?.get(i - 1).href,
+                            getintent2,
+                            res?.get(i - 1).all_idx
+                        )
+                    )
                 }
 
             }
 
             override fun onFailure(call: Call<List<grant_form>>, t: Throwable) {
-                Toast.makeText(this@SearchListActivity,"연결 실패.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SearchListActivity, "연결 실패.", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -74,7 +81,6 @@ class SearchListActivity : AppCompatActivity() {
         rv_itemlist.addItemDecoration(decoDivider)
 
         rv_itemlist.setHasFixedSize(true)
-
 
 
     }

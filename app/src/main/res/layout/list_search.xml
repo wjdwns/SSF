@@ -34,26 +34,11 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/grant_dday"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/grant_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginLeft="26dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="18dp"
-            android:background="@drawable/dday"
-            android:gravity="center"
-            android:text="D-DAY"
-            android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/grant_heart"
+            android:id="@+id/grant_host"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/grant_dday"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/grant_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
