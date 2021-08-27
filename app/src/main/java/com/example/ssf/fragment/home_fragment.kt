@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +17,17 @@ import com.example.ssf.Activity.SearchListActivity
 import com.example.ssf.Adapter.SearchlistAdapter
 import com.example.ssf.List.ItemList
 import com.example.ssf.R
+import com.example.ssf.retrofit2.New_Service
+import com.example.ssf.retrofit2.PoPular_Service
+import com.example.ssf.retrofit2.grant_form
 import kotlinx.android.synthetic.main.fragment_home.*
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +43,7 @@ class home_fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var user : Int? = null
 
 
 
@@ -40,6 +52,7 @@ class home_fragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+            user = it.getInt("유저넘버")
             val getbundle = arguments?.getInt("유저넘버")
             val TAG: String = "로그"
             Log.d(TAG, "home_fragment - onCreate() called $getbundle")
@@ -53,10 +66,10 @@ class home_fragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         main_search.setOnClickListener{
             activity?.let{
+                val TAG: String = "로그"
                 val intent = Intent(context,Keyword_searchActivity::class.java)
-                val getbundle = arguments?.getInt("유저넘버")
-                println("유저넘버 : $getbundle")
-                intent.putExtra("유저넘버", getbundle)
+                Log.d(TAG, "home_fragment - onActivityCreated() called" + user)
+                intent.putExtra("유저넘버", user)
                 activity!!.startActivity(intent)
             }
         }
@@ -69,29 +82,93 @@ class home_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val TAG: String = "로그"
+        val getbundle = arguments?.getInt("유저넘버")
         val realItems = arrayListOf(
             ItemList("국가장학금",  "♥ 56","www.",1,1),
             ItemList("숭실대학교 백마우수어쩌구",  "♥ 90","www.",1,1),
             ItemList("경기도 2차 재난지원금",  "♥ 27","www.",1,1),
             ItemList("청년창업지원금",  "♥ 8","www.",1,1))
-
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        Log.d(TAG, "home_fragment - onCreateView() called" + getbundle)
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build();
+        var retrofit = Retrofit.Builder()
+            .baseUrl("http://221.155.173.160:5000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        val PopularService = retrofit.create(PoPular_Service::class.java)
+        PopularService.requestPoPular().enqueue(object : Callback<List<grant_form>> {
+            override fun onResponse(
+                call: Call<List<grant_form>>,
+                response: Response<List<grant_form>>
+            ) {
+                Toast.makeText(context, "연결성공", Toast.LENGTH_SHORT).show()
+                val res = response.body()
+                var realItems = ArrayList<ItemList>()
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.main_recyclerview1)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = SearchlistAdapter(realItems)
-        val decoDivider = DividerItemDecoration(recyclerView.context, 1)
-        recyclerView.addItemDecoration(decoDivider)
+                for (i in 1..res?.size!!) {
+                    realItems.add(
+                        ItemList(
+                            res?.get(i - 1).title,
+                            res?.get(i - 1).host,
+                            res?.get(i - 1).href,
+                            user!!,
+                            res?.get(i - 1).all_idx
+                        )
+                    )
+                }
+                val recyclerView: RecyclerView = view.findViewById(R.id.main_recyclerview1)
+                recyclerView.layoutManager = LinearLayoutManager(activity)
+                recyclerView.adapter = SearchlistAdapter(realItems)
+                val decoDivider = DividerItemDecoration(recyclerView.context, 1)
+                recyclerView.addItemDecoration(decoDivider)
+                recyclerView.setHasFixedSize(true)
+            }
 
-        recyclerView.setHasFixedSize(true)
+            override fun onFailure(call: Call<List<grant_form>>, t: Throwable) {
+                Toast.makeText(context, "연결실패", Toast.LENGTH_SHORT).show()
+            }
 
-        val recyclerView2: RecyclerView = view.findViewById(R.id.main_recyclerview2)
-        recyclerView2.layoutManager = LinearLayoutManager(activity)
-        recyclerView2.adapter = SearchlistAdapter(realItems)
-        val decoDivider2 = DividerItemDecoration(recyclerView2.context, 1)
-        recyclerView2.addItemDecoration(decoDivider2)
+        })
 
-        recyclerView2.setHasFixedSize(true)
+
+        val newService = retrofit.create(New_Service::class.java)
+        newService.requestNew().enqueue(object : Callback<List<grant_form>>{
+            override fun onResponse(
+                call: Call<List<grant_form>>,
+                response: Response<List<grant_form>>
+            ) {
+                Toast.makeText(context, "연결성공", Toast.LENGTH_SHORT).show()
+                val res = response.body()
+                var realItems = ArrayList<ItemList>()
+                for (i in 1..res?.size!!) {
+                    realItems.add(
+                        ItemList(
+                            res?.get(i - 1).title,
+                            res?.get(i - 1).host,
+                            res?.get(i - 1).href,
+                            user!!,
+                            res?.get(i - 1).all_idx
+                        )
+                    )
+                }
+                val recyclerView2: RecyclerView = view.findViewById(R.id.main_recyclerview2)
+                recyclerView2.layoutManager = LinearLayoutManager(activity)
+                recyclerView2.adapter = SearchlistAdapter(realItems)
+                val decoDivider2 = DividerItemDecoration(recyclerView2.context, 1)
+                recyclerView2.addItemDecoration(decoDivider2)
+                recyclerView2.setHasFixedSize(true)
+            }
+
+            override fun onFailure(call: Call<List<grant_form>>, t: Throwable) {
+                Toast.makeText(context, "연결실패", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
 
         val more_view =view.findViewById<TextView>(R.id.main_moreview)
         val more_view2 =view.findViewById<TextView>(R.id.main_moreview2)

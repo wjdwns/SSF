@@ -60,25 +60,31 @@ class DetailPageActivity : AppCompatActivity(), BottomNavigationView.OnNavigatio
         val TabService = retrofit.create(TabService::class.java)
         when(item.itemId){
             R.id.cart_tab -> {
-                TabService.requestTab(Tab).enqueue(object : Callback<Tab_Output> {
-                    override fun onResponse(
-                        call: Call<Tab_Output>,
-                        response: Response<Tab_Output>
-                    ) {
-                        val res = response.body()
-                        if (res?.Check == true) {
-                            Toast.makeText(this@DetailPageActivity, "찜 성공.", Toast.LENGTH_SHORT)
+                if(intent.getIntExtra("유저넘버",0)==0)
+                {
+                    Toast.makeText(this,"비회원은 지원하지 않는 기능입니다.",Toast.LENGTH_SHORT)
+                }
+                else {
+                    TabService.requestTab(Tab).enqueue(object : Callback<Tab_Output> {
+                        override fun onResponse(
+                            call: Call<Tab_Output>,
+                            response: Response<Tab_Output>
+                        ) {
+                            val res = response.body()
+                            if (res?.Check == true) {
+                                Toast.makeText(this@DetailPageActivity, "찜 성공.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Tab_Output>, t: Throwable) {
+                            Toast.makeText(this@DetailPageActivity, "연결 실패.", Toast.LENGTH_SHORT)
                                 .show()
                         }
-                    }
 
-                    override fun onFailure(call: Call<Tab_Output>, t: Throwable) {
-                        Toast.makeText(this@DetailPageActivity, "연결 실패.", Toast.LENGTH_SHORT).show()
-                    }
-
-                })
-                return true
-
+                    })
+                    return true
+                }
             }
             R.id.home -> {
                 return true

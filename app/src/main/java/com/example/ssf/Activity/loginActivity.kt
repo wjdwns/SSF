@@ -65,6 +65,8 @@ class loginActivity : AppCompatActivity() {
             Log.d(TAG, "loginActivity - joinmem() called")
             Toast.makeText(this@loginActivity,"비회원으로 입장하셨습니다.",Toast.LENGTH_SHORT).show()
             val intent = Intent(this, joinmemberActivity::class.java)
+            val user = 0
+            intent.putExtra("유저넘버",user)
             startActivity(intent)
             finish()
         }

@@ -67,13 +67,6 @@ class cart_fragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-
-        val raItems = arrayListOf(
-            ItemList("국가장학금", "서울시장", "www.", 1, 1),
-            ItemList("숭실대학교 백마우수어쩌구", "숭실대 총장", "www.", 1, 1),
-            ItemList("경기도 2차 재난지원금", "경기도장", "www.", 1, 1),
-            ItemList("청년창업지원금", "청년지원장", "www.", 1, 1)
-        )
         val usernum = arguments?.getInt("유저넘버")
         val Input = Cart_Input(usernum!!)
         Log.d(TAG, "cart_fragment - onCreateView() called $usernum")

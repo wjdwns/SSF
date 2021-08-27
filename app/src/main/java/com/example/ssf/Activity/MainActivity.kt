@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.ssf.R
 import com.example.ssf.fragment.cart_fragment
 import com.example.ssf.fragment.home_fragment
@@ -46,22 +47,34 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 return true
             }
             R.id.search_button ->{
-                val transaction = supportFragmentManager.beginTransaction()
-                val fragment = search_setting_fragment()
-                bundle.putInt("유저넘버",getintent)
-                fragment.arguments = bundle
-                transaction.replace(R.id.fragment_main,fragment)
-                transaction.commit()
-                return true
+                if(intent.getIntExtra("유저넘버",0)==0)
+                {
+                    Toast.makeText(this,"비회원은 지원하지 않는 기능입니다.",Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    val fragment = search_setting_fragment()
+                    bundle.putInt("유저넘버", getintent)
+                    fragment.arguments = bundle
+                    transaction.replace(R.id.fragment_main, fragment)
+                    transaction.commit()
+                    return true
+                }
             }
             R.id.main_cart_tab -> {
-                val transaction = supportFragmentManager.beginTransaction()
-                val fragment = cart_fragment()
-                bundle.putInt("유저넘버",getintent)
-                fragment.arguments = bundle
-                transaction.replace(R.id.fragment_main,fragment)
-                transaction.commit()
-                return true
+                if(intent.getIntExtra("유저넘버",0)==0)
+                {
+                    Toast.makeText(this,"비회원은 지원하지 않는 기능입니다.",Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    val fragment = cart_fragment()
+                    bundle.putInt("유저넘버", getintent)
+                    fragment.arguments = bundle
+                    transaction.replace(R.id.fragment_main, fragment)
+                    transaction.commit()
+                    return true
+                }
             }
         }
         return false
