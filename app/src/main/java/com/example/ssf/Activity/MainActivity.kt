@@ -19,14 +19,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val mFragmentManager = supportFragmentManager
+        nav_view.setOnNavigationItemSelectedListener(this)
         val getintent = intent.getIntExtra("유저넘버",0)
         val fragment = home_fragment()
         val bundle = Bundle()
         bundle.putInt("유저넘버",getintent)
         fragment.arguments = bundle
-        mFragmentManager.beginTransaction().replace(R.id.fragment_main, home_fragment()).commit()
-        nav_view.setOnNavigationItemSelectedListener(this)
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_main,fragment)
+        transaction.commit()
         Log.d(TAG, "MainActivity - onCreate() called $getintent")
 
     }

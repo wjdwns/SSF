@@ -73,9 +73,6 @@ class home_fragment : Fragment() {
                 activity!!.startActivity(intent)
             }
         }
-
-
-
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,11 +81,7 @@ class home_fragment : Fragment() {
         // Inflate the layout for this fragment
         val TAG: String = "로그"
         val getbundle = arguments?.getInt("유저넘버")
-        val realItems = arrayListOf(
-            ItemList("국가장학금",  "♥ 56","www.",1,1),
-            ItemList("숭실대학교 백마우수어쩌구",  "♥ 90","www.",1,1),
-            ItemList("경기도 2차 재난지원금",  "♥ 27","www.",1,1),
-            ItemList("청년창업지원금",  "♥ 8","www.",1,1))
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         Log.d(TAG, "home_fragment - onCreateView() called" + getbundle)
         val interceptor = HttpLoggingInterceptor()
