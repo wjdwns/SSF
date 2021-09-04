@@ -25,10 +25,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailPageActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     val TAG: String = "로그"
+    var ALL_idx:Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_page)
         Log.d(TAG, "DetailPageActivity - onCreate() called")
+        ALL_idx = intent.getIntExtra("ALL_idx", 0)
         tv_title.text = intent.getStringExtra("title")
         tv_host.text = intent.getStringExtra("host")
         val url = intent.getStringExtra("href")
@@ -46,7 +48,15 @@ class DetailPageActivity : AppCompatActivity(), BottomNavigationView.OnNavigatio
 
         btn_comment.setOnClickListener{
             val intent2 = Intent(this, CommentActivity::class.java)
-            startActivity(intent2)
+            intent2.putExtra("유저넘버",usernum)
+            intent2.putExtra("ALL_idx",ALL_idx)
+            if(intent.getIntExtra("유저넘버",0)==0)
+            {
+                Toast.makeText(this,"비회원은 지원하지 않는 기능입니다.",Toast.LENGTH_SHORT)
+            }
+            else{
+                startActivity(intent2)
+            }
         }
 
     }
@@ -54,9 +64,8 @@ class DetailPageActivity : AppCompatActivity(), BottomNavigationView.OnNavigatio
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         Log.d(TAG, "DetailPageActivity - onNavigationItemSelected() called")
         val usernum = intent.getIntExtra("유저넘버", 0)
-        val ALL_idx = intent.getIntExtra("ALL_idx", 0)
         val retrofit = Server_respond()
-        val Tab = Tab_Data(usernum, ALL_idx)
+        val Tab = Tab_Data(usernum, ALL_idx!!)
         val TabService = retrofit.create(TabService::class.java)
         when(item.itemId){
             R.id.cart_tab -> {

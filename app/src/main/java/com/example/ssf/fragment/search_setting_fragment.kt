@@ -134,7 +134,7 @@ class search_setting_fragment : Fragment() {
         }
         items = resources.getStringArray(R.array.spinner_income_level)
         myAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
-        val spinner4 = view.findViewById<Spinner>(R.id.spinner4)
+        val spinner4 = view.findViewById<Spinner>(R.id.spinner2)
         spinner4.adapter = myAdapter
         spinner4.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
 

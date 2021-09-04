@@ -28,6 +28,7 @@ class Keyword_searchActivity : AppCompatActivity() {
                 val intent = Intent(this@Keyword_searchActivity,SearchListActivity::class.java)
                 intent.putExtra("검색어", query)
                 intent.putExtra("유저넘버", getintent)
+                intent.putExtra("페이지",3)
                 startActivity(intent)
                 return true
             }

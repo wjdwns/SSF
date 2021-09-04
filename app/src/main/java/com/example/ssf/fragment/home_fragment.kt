@@ -101,7 +101,6 @@ class home_fragment : Fragment() {
                 Toast.makeText(context, "연결성공", Toast.LENGTH_SHORT).show()
                 val res = response.body()
                 var realItems = ArrayList<ItemList>()
-
                 for (i in 1..res?.size!!) {
                     realItems.add(
                         ItemList(
@@ -167,10 +166,14 @@ class home_fragment : Fragment() {
         val more_view2 =view.findViewById<TextView>(R.id.main_moreview2)
         more_view.setOnClickListener {
             val intent = Intent(activity, SearchListActivity::class.java)
+            intent.putExtra("유저넘버",user)
+            intent.putExtra("페이지",1)
             startActivity(intent)
         }
         more_view2.setOnClickListener{
             val intent = Intent(activity, SearchListActivity::class.java)
+            intent.putExtra("유저넘버",user)
+            intent.putExtra("페이지",2)
             startActivity(intent)
         }
 

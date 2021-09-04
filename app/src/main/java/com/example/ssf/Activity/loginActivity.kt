@@ -61,19 +61,20 @@ class loginActivity : AppCompatActivity() {
             })
 
         }
-        joinmem.setOnClickListener{
-            Log.d(TAG, "loginActivity - joinmem() called")
-            Toast.makeText(this@loginActivity,"비회원으로 입장하셨습니다.",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, joinmemberActivity::class.java)
+        nomem.setOnClickListener{
+            Log.d(TAG, "loginActivity - nomem() called")
             val user = 0
             intent.putExtra("유저넘버",user)
+            val intent = Intent(this, MainActivity::class.java)
+            Toast.makeText(this@loginActivity,"비회원으로 입장하셨습니다.",Toast.LENGTH_SHORT).show()
             startActivity(intent)
             finish()
         }
-        nomem.setOnClickListener{
-            Log.d(TAG, "loginActivity - nomem() called")
-            val intent = Intent(this, MainActivity::class.java)
+        joinmem.setOnClickListener{
+            Log.d(TAG, "loginActivity - joinmem() called")
+            val intent = Intent(this, joinmemberActivity::class.java)
             startActivity(intent)
+
         }
     }
 }
