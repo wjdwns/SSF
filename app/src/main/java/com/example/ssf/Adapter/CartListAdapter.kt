@@ -17,6 +17,7 @@ class CartListAdapter (val items: ArrayList<ItemList>)  : RecyclerView.Adapter<C
 
     class viewHolder(itemView : View)  :RecyclerView.ViewHolder(itemView){
         val title = itemView.findViewById<TextView>(R.id.tv_cartlist)
+        val Menu = itemView.findViewById<ImageButton>(R.id.btn_cartMenu)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
