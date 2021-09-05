@@ -5,8 +5,8 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface Cart_Del {
-    @POST
+    @POST("/Like/Delete")
     fun requestCartdel(
-        @Body Cartdel : Cartdel_Data
+        @Body Cartdel : Cart_Del_Data
     ):Call<Cart_Del_Output>
 }
